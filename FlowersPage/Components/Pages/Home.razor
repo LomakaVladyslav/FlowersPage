@@ -1,0 +1,70 @@
+﻿@page "/"
+
+<PageTitle>Home</PageTitle>
+
+<h1>Квіти</h1>
+
+<div class="grid-container">
+    @foreach (var flower in Flowers) 
+    {
+        <div class="card">
+            <img src="@flower.ImageUrl" alt="@flower.Name" />
+            <h2>@flower.Name</h2>
+            <p>Ціна: @flower.Price грн</p>
+        </div>
+    }
+</div>
+
+@code {
+    private List<Flower> Flowers = new List<Flower>
+    {
+        new Flower { Name = "Троянда", Price = 150, ImageUrl = "https://shop.camellia.ua/upload/kamelia_flora/photos/0f/74/1200x1200/37e9832_5cf0f5cfc687a.JPG" },
+        new Flower { Name = "Лілія", Price = 200, ImageUrl = "https://yaskrava.com.ua/image/cache/catalog/lukovicyvesna/lilii/gorshkovye/lady_like-500x500.jpg" },
+        new Flower { Name = "Тюльпан", Price = 100, ImageUrl = "https://novaflora.com.ua/6595-large_default/tyulpan-design-impression.jpg" },
+        new Flower { Name = "Орхідея", Price = 300, ImageUrl = "https://artflora.ru/sites/default/files/field/image/photo_2024-02-28_11.46.27.jpeg" },
+        new Flower { Name = "Ромашка", Price = 50, ImageUrl = "https://florium.ua/media/catalog/product/cache/1/file/500x500/17f82f742ffe127f42dca9de82fb58b1/r/o/romashka_sadova_velikokv_tkova_b_la.jpg" },
+        new Flower { Name = "Гвоздика", Price = 80, ImageUrl = "https://camellia-market.com.ua/image/cache/catalog/amarilis_diantus/img_7308-auto_width_1333.jpg" },
+        new Flower { Name = "Ірис", Price = 120, ImageUrl = "https://images.prom.ua/4887384255_w600_h600_4887384255.jpg" },
+        new Flower { Name = "Хризантема", Price = 90, ImageUrl = "https://yaskravaklumba.com.ua/image/cache/catalog/mnogoletniki/hrizantema/baveno_dark_10-500x500.jpg" }
+    };
+
+    private class Flower
+    {
+        public string Name { get; set; }
+        public int Price { get; set; }
+        public string ImageUrl { get; set; }
+    }
+}
+
+<style>
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .card {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 16px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .card img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    .card h2 {
+        margin: 12px 0 8px;
+        font-size: 1.25rem;
+    }
+
+    .card p {
+        font-size: 1rem;
+        color: #555;
+    }
+</style>
